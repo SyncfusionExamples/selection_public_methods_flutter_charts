@@ -1,0 +1,2 @@
+# selection_public_methods_flutter_charts
+Selection public methods Flutter charts
