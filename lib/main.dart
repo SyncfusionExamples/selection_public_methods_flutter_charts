@@ -28,13 +28,10 @@ class _MyHomePageState extends State<MyHomePage> {
   late SfCartesianChart chart;
   late SelectionBehavior selection;
 
-  void initState(){
+  @override
+  void initState() {
     selection =
         SelectionBehavior(enable: true, selectedColor: Colors.yellowAccent);
-        super.initState();
-  }
-  @override
-  Widget build(BuildContext context) {
     chart = SfCartesianChart(series: <ChartSeries<ChartData, num>>[
       ColumnSeries<ChartData, num>(
           dataSource: <ChartData>[
@@ -48,7 +45,11 @@ class _MyHomePageState extends State<MyHomePage> {
           yValueMapper: (ChartData data, _) => data.y,
           selectionBehavior: selection)
     ]);
+    super.initState();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Syncfusion Flutter chart'),
@@ -70,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void select() {
     // In the selection method, you can pass the pointIndex and seriesIndex values of the data point to be selected.
-    selection.selectDataPoints(1, 0);
+    selection.selectDataPoints(1);
   }
 }
 
