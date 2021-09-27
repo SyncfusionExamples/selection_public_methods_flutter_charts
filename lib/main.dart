@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:syncfusion_flutter_core/core.dart';
 
 void main() {
-  // Register your license here
-  SyncfusionLicense.registerLicense('ADD YOUR LICENSE KEY HERE');
   return runApp(ChartApp());
 }
 
@@ -21,20 +18,20 @@ class ChartApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   // ignore: prefer_const_constructors_in_immutables
-  MyHomePage({Key key}) : super(key: key);
+  MyHomePage({Key? key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  SfCartesianChart chart;
-  SelectionSettings selection;
+  late SfCartesianChart chart;
+  late SelectionBehavior selection;
 
   @override
   Widget build(BuildContext context) {
     selection =
-        SelectionSettings(enable: true, selectedColor: Colors.yellowAccent);
+        SelectionBehavior(enable: true, selectedColor: Colors.yellowAccent);
     chart = SfCartesianChart(series: <ChartSeries<ChartData, num>>[
       ColumnSeries<ChartData, num>(
           dataSource: <ChartData>[
@@ -46,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
           xValueMapper: (ChartData data, _) => data.x,
           yValueMapper: (ChartData data, _) => data.y,
-          selectionSettings: selection)
+          selectionBehavior: selection)
     ]);
 
     return Scaffold(
@@ -56,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Center(
           child: Column(
             children: <Widget>[
-              RaisedButton(
+              ElevatedButton(
                 child: Text('Select'),
                 onPressed: select,
               ),
@@ -70,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void select() {
     // In the selection method, you can pass the pointIndex and seriesIndex values of the data point to be selected.
-    selection.selectionIndex(1, 0);
+    selection.selectDataPoints(1, 0);
   }
 }
 
