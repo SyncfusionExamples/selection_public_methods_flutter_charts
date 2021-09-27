@@ -28,10 +28,13 @@ class _MyHomePageState extends State<MyHomePage> {
   late SfCartesianChart chart;
   late SelectionBehavior selection;
 
-  @override
-  Widget build(BuildContext context) {
+  void initState(){
     selection =
         SelectionBehavior(enable: true, selectedColor: Colors.yellowAccent);
+        super.initState();
+  }
+  @override
+  Widget build(BuildContext context) {
     chart = SfCartesianChart(series: <ChartSeries<ChartData, num>>[
       ColumnSeries<ChartData, num>(
           dataSource: <ChartData>[
