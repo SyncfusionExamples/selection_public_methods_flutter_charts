@@ -32,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     selection =
         SelectionBehavior(enable: true, selectedColor: Colors.yellowAccent);
-    chart = SfCartesianChart(series: <ChartSeries<ChartData, num>>[
+    chart = SfCartesianChart(series: <ColumnSeries<ChartData, num>>[
       ColumnSeries<ChartData, num>(
           dataSource: <ChartData>[
             ChartData(10, 17),
